@@ -1,16 +1,16 @@
 import React from "react";
 import Header from "../../Components/Header";
-import Login from "../../Components/Login";
+import SignUp from "../../Components/SignUp";
 import Footer from "../../Components/Footer";
 
-function index() {
+const SignUpPage = () => {
   return (
     <React.Fragment>
       <Header />
-      <Login />
+      <SignUp />
       <Footer />
     </React.Fragment>
   );
-}
+};
 
-export default index;
+export default SignUpPage;

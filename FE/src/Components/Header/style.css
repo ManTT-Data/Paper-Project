@@ -1,0 +1,11 @@
+.primary-gradient {
+  background: linear-gradient(to right, #459aff 0%, #6054ff 100%);
+  height: 48vh;
+}
+
+.secondary-gradient {
+  background: linear-gradient(to left, #459aff 0%, #6054ff 100%);
+  height: 10px;
+  opacity: 33%;
+}
+
