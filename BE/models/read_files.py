@@ -10,7 +10,7 @@ import sys
 import io
 import os
 
-os.environ["GOOGLE_API_KEY"] = 'AIzaSyBy7olYxlX8bHNXZ3AffnvR8FNth7KRIQ8'
+os.environ["GOOGLE_API_KEY"] = ''
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
