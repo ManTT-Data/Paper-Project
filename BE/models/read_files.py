@@ -5,13 +5,9 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Qdrant
 import google.generativeai as genai
-# import qdrant_client
 import sys
 import io
-import os
-
-os.environ["GOOGLE_API_KEY"] = ''
-genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+from models import api_model
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
