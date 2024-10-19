@@ -40,7 +40,7 @@ async def upload_docs(file: UploadFile = File(...)):
 
     file_url = blob.public_url
     return {"file_url": file_url}
-    
+
 @app.post("/delete_file")
 async def delete_file(file_name: str):
     try:
@@ -55,3 +55,8 @@ async def delete_file(file_name: str):
         return {"message": f"File {file_name} deleted successfully"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+
+# url = "http://127.0.0.1:8000/delete_file"
+# data = {"file_name": "example.pdf"}
+
+# response = requests.post(url, json=data)
