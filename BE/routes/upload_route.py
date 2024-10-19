@@ -1,15 +1,15 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from firebase_admin import credentials, storage
+import firebase_admin
 from uuid import uuid4
+from fastapi import APIRouter
+from config.firebase_cfg import init_firebase
 
-cred = credentials.Certificate("./cred.json")
-firebase_admin.initialize_app(cred, {
-    'storageBucket': 'paper-trans-3e6b8.appspot.com'
-})
+init_firebase()
 
-app = FastAPI()
+upload_router = APIRouter()
 
-@app.post("/upload_pdf")
+@upload_router.post("/upload_pdf")
 async def upload_pdf(file: UploadFile = File(...)):
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=400, detail="must be PDF file")
@@ -25,7 +25,7 @@ async def upload_pdf(file: UploadFile = File(...)):
     file_url = blob.public_url
     return {"file_url": file_url}
 
-@app.post("/upload_docs")
+@upload_router.post("/upload_docs")
 async def upload_docs(file: UploadFile = File(...)):
     if file.content_type != "application/docs":
         raise HTTPException(status_code=400, detail="must be DOCS file")
@@ -41,7 +41,7 @@ async def upload_docs(file: UploadFile = File(...)):
     file_url = blob.public_url
     return {"file_url": file_url}
 
-@app.post("/delete_file")
+@upload_router.post("/delete_file")
 async def delete_file(file_name: str):
     try:
         bucket = storage.bucket()
