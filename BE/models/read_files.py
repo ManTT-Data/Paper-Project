@@ -27,5 +27,3 @@ def read_local():
         embedding=embeddings # passing in the embedder model
     )
     db.save_local('BE/embedding')
-
-read_local()
